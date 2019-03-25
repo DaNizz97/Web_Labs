@@ -26,8 +26,22 @@ const data = JSON.parse(getQuote());
 
 img1.onload = function () {
     ctx.drawImage(img1, 0, 0);
-    fillText()
-};
+    img2.crossOrigin = 'anonymous';
+    img2.src = path + xSize + 'x' + yResize;
+    img2.onload = function () {
+        ctx.drawImage(img2, 0, 200 + yOffset);
+        img3.crossOrigin = 'anonymous';
+        img3.src = path + xResize + 'x' + ySize;
+        img3.onload = function () {
+            ctx.drawImage(img3, 300 + xOffset, 0);
+            img4.crossOrigin = 'anonymous';
+            img4.src = path + xResize + 'x' + yResize;
+            img4.onload = function () {
+                ctx.drawImage(img4, 300 + xOffset, 200 + yOffset);
+                fillText()
+            };
+        };
+    };};
 
 
 document.body.appendChild(canvas);
