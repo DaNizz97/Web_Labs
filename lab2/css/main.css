@@ -1,0 +1,67 @@
+.masthead {
+    position: relative;
+    background-size: cover;
+    background: url(../image/img.jpg) no-repeat center center;
+    padding-top: 4rem;
+    padding-bottom: 26rem;
+    background-size: 100% 100%;
+}
+
+.overlay {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+    background: #bbd5df;
+    opacity: .3;
+}
+
+.brief-description {
+    margin: auto;
+    padding: 2em;
+}
+
+.brief-description h1 {
+    text-align: left;
+}
+
+.brief-description p {
+    padding-left: 5px;
+    border-left: solid;
+    color: #666;
+    font-size: 20px;
+    width: 60%;
+    line-height: 1.5;
+}
+
+.element {
+    padding-top: 2rem;
+}
+
+.element h3 {
+    font-size: 30px;
+}
+
+.element p {
+    display: block;
+    margin-block-start: 1em;
+}
+.element:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transition-delay: .1s;
+}
+
+.description {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.feedback {
+    background: #bbd5df;
+    padding: 2rem;
+    height: 22rem;
+    border-radius: 2rem;
+}
