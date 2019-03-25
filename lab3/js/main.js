@@ -64,7 +64,7 @@ function addText() {
 function fillText() {
     ctx.font = 'Bold 18px Arial';
     ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
-    ctx.fillRect(0, 0, 600, 400)
+    ctx.fillRect(0, 0, 600, 400);
     ctx.fillStyle = "white";
     addText()
 }
