@@ -3,8 +3,7 @@ const canvas = document.createElement('canvas');
 let path = 'https://source.unsplash.com/collection/1127180/';
 canvas.width = 800;
 canvas.height = 800;
-var
-    ctx = canvas.getContext('2d'),
+const ctx = canvas.getContext('2d'),
 
     img1 = new Image(),
     img2 = new Image(),
