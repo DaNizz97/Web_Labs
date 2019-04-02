@@ -56,13 +56,13 @@ class Post {
 
 
 async function getNews() {
-    let result = await sendRequest('GET', 'http://localhost:8081/slimapp/public/api/news');
+    let result = await sendRequest('GET', 'http://88.201.142.90:8888/slimapp/public/api/news');
     let news = JSON.parse(result);
     createDocumentFrame(news, false)
 }
 
 async function getAllNews() {
-    let result = await sendRequest('GET', 'http://localhost:8081/slimapp/public/api/news/all');
+    let result = await sendRequest('GET', 'http://88.201.142.90:8888/slimapp/public/api/news/all');
     let news = JSON.parse(result);
     createDocumentFrame(news, true)
 }

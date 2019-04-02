@@ -11,7 +11,7 @@ form.onsubmit = (e) => {
             "&title=" + encodeURIComponent(title) +
             "&body=" + encodeURIComponent(postBody),
         xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8081/slimapp/public/api/news/add');
+    xhr.open('POST', 'http://88.201.142.90:8888/slimapp/public/api/news/add');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(requestBody);
 
