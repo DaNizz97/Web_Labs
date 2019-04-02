@@ -3,7 +3,7 @@ let form = document.getElementById('addPost');
 form.onsubmit = (e) => {
     e.preventDefault();
 
-    var username = document.getElementById('username').value,
+    let username = document.getElementById('username').value,
         title = document.getElementById('title').value,
         postBody = document.getElementById('body').value,
 
