@@ -1,3 +1,10 @@
 .paragraph {
     word-wrap: break-word;
 }
+
+.formms {
+    width: 100%;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+}
