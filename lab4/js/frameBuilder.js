@@ -56,13 +56,13 @@ class Post {
 
 
 async function getNews() {
-    let result = await sendRequest('GET', 'https://88.201.142.90:8888/slimapp/public/api/news');
+    let result = await sendRequest('GET', 'https://localhost/slimapp/public/api/news');
     let news = JSON.parse(result);
     createDocumentFrame(news, false)
 }
 
 async function getAllNews() {
-    let result = await sendRequest('GET', 'https://88.201.142.90:8888/slimapp/public/api/news/all');
+    let result = await sendRequest('GET', 'https://localhost/slimapp/public/api/news/all');
     let news = JSON.parse(result);
     createDocumentFrame(news, true)
 }
@@ -136,7 +136,7 @@ function addAdminButtons(divWithDateAndUsername, post) {
     let deleteButton = document.createElement('button');
     deleteButton.setAttribute('class', 'btn btn-danger float-right');
     deleteButton.onclick = async () => {
-        await sendRequest('DELETE', 'http://localhost:8081/slimapp/public/api/news/delete/' + post.id);
+        await sendRequest('DELETE', 'https://localhost/slimapp/public/api/news/delete/' + post.id);
         document.body.removeChild(document.body.children[document.body.childElementCount - 1]);
         getAllNews();
     };
@@ -147,7 +147,7 @@ function addAdminButtons(divWithDateAndUsername, post) {
         publishButton.setAttribute('class', 'btn btn-info float-right mr-3');
         publishButton.textContent = 'Publish post';
         publishButton.onclick = async () => {
-            await sendRequest('GET', 'http://localhost:8081/slimapp/public/api/news/publish/' + post.id);
+            await sendRequest('GET', 'https://localhost/slimapp/public/api/news/publish/' + post.id);
             document.body.removeChild(document.body.children[document.body.childElementCount - 1]);
             getAllNews();
         };
