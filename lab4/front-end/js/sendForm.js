@@ -19,7 +19,7 @@ form.onsubmit = (e) => {
         if (xhr.readyState === 4 && xhr.status === 200) {
             form.reset();
             alert("The post has been submitted for review!");
-            document.location.href = "./index.html";
+            document.location.href = "../../../index.html";
             console.log(xhr.responseText)
         }
     }
