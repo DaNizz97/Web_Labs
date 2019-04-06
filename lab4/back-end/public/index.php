@@ -7,13 +7,5 @@ require '../src/config/db.php';
 
 $app = new \Slim\App;
 
-$app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
-    $name = $args['name'];
-    $response->getBody()->write("Hello, $name");
-
-    return $response;
-});
-
-// User Routes
-require '../src/routes/users.php';
+require '../src/routes/news.php';
 $app->run();
