@@ -54,19 +54,22 @@ class Post {
     }
 }
 
-
+//Функция-обертка запроса. С помощью этой функции создается форма документа без кнопок удаления и публикации
 async function getNews() {
     let result = await sendRequest('GET', 'https://localhost/slimapp/public/api/news');
     let news = JSON.parse(result);
+    //Непосредственно создание документа с передачей ему всех новостей и указания, является ли страница админской. Только на админской странице есть кнопки.
     createDocumentFrame(news, false)
 }
 
 async function getAllNews() {
     let result = await sendRequest('GET', 'https://localhost/slimapp/public/api/news/all');
     let news = JSON.parse(result);
+    //А здесь уже говорится, что страница админская, чтобы добавить кнопки под каждый пост
     createDocumentFrame(news, true)
 }
 
+//Шаблон для запроса
 function sendRequest(method, url) {
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
@@ -91,6 +94,7 @@ function sendRequest(method, url) {
     })
 }
 
+//Функция, которая создает основную форму документа, т.е. берёт новость в виде данных и создает на ее основе блок со стилизацией
 function createDocumentFrame(news, isAdminPage) {
     let container = document.createElement('div');
     container.setAttribute('class', 'container mt-5');
@@ -119,6 +123,7 @@ function createDocumentFrame(news, isAdminPage) {
         divWithDateAndUsername.appendChild(date);
         divWithDateAndUsername.appendChild(spanUsername);
 
+        //Если страница админская - к каждлму посту добавляются кнопки
         if (isAdminPage)
             addAdminButtons(divWithDateAndUsername, post);
 
@@ -130,6 +135,7 @@ function createDocumentFrame(news, isAdminPage) {
     document.body.appendChild(container);
 }
 
+//Функция добавления кнопок. На каждую кнопку вешается соответствующий коллбэк
 function addAdminButtons(divWithDateAndUsername, post) {
     let span = divWithDateAndUsername.lastChild;
     span.setAttribute('class', 'badge');

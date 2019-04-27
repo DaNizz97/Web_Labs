@@ -4,6 +4,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 $app = new \Slim\App;
 
+//Задание необходимых заголовков для ответа
 $app->add(function ($req, $res, $next) {
     $response = $next($req, $res);
     return $response
@@ -13,6 +14,7 @@ $app->add(function ($req, $res, $next) {
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 });
 
+//GET запрос на получение новостей, которые еще не были одобрены админом (is_posted = 1)
 $app->get('/api/news', function(Request $request, Response $response){
   $sql = "SELECT users.name AS username, news.id, news.title, news.body, news.creation_date, news.is_posted FROM users JOIN news ON users.id = news.user_id where news.is_posted > 0;";
 
@@ -29,6 +31,7 @@ $app->get('/api/news', function(Request $request, Response $response){
   }
 });
 
+//GET запрос на получение всех новостей (для админа)
 $app->get('/api/news/all', function(Request $request, Response $response){
   $sql = "SELECT users.name AS username, news.id, news.title, news.body, news.creation_date, news.is_posted FROM users JOIN news ON users.id = news.user_id;";
 
@@ -45,6 +48,7 @@ $app->get('/api/news/all', function(Request $request, Response $response){
   }
 });
 
+//Запрос на удаление новости по id
 $app->delete('/api/news/delete/{id}', function(Request $request, Response $response){
   $route = $request->getAttribute('route');
   $postId = $route->getArgument('id');
@@ -60,6 +64,7 @@ $app->delete('/api/news/delete/{id}', function(Request $request, Response $respo
     }
 });
 
+//Обновление статуса новости (публикация новости админом)
 $app->get('/api/news/publish/{id}', function(Request $request, Response $response){
   $route = $request->getAttribute('route');
   $postId = $route->getArgument('id');
@@ -75,6 +80,7 @@ $app->get('/api/news/publish/{id}', function(Request $request, Response $respons
     }
 });
 
+//Добавление новости (из формы)
 $app->post('/api/news/add', function(Request $request, Response $response) {
   try {
     $db = new db();
